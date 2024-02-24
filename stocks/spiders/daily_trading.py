@@ -1,6 +1,9 @@
 import scrapy
 from stocks.items import StocksItem
-import json
+
+# import json
+# import csv
+import pandas as pd
 
 
 class DailyTrading(scrapy.Spider):
@@ -28,8 +31,17 @@ class DailyTrading(scrapy.Spider):
             result_data.append(item)
 
         # Save the scraped data to a JSON file
-        with open(
-            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/daily_trading.json",
-            "w",
-        ) as f:
-            json.dump([dict(item) for item in result_data], f)
+        df = pd.DataFrame(result_data)
+        df.to_json(
+            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/live.json",
+            orient="records",
+        )
+        df.to_csv(
+            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/livecsv.csv",
+            index=False,
+        )
+        # with open(
+        #     "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/daily_trading.json",
+        #     "w",
+        # ) as f:
+        #     json.dump([dict(item) for item in result_data], f)

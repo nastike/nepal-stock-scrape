@@ -1,7 +1,9 @@
 import scrapy
 from stocks.items import ShareItem
 from scrapy_playwright.page import PageMethod
-import json
+
+# import json
+import pandas as pd
 
 
 class ProposedDividendsSpider(scrapy.Spider):
@@ -61,12 +63,16 @@ class ProposedDividendsSpider(scrapy.Spider):
         await page.close()
 
         # Save the final result to a file
-
-        with open(
-            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/proposed_dividents.json",
-            "w",
-        ) as f:
-            json.dump([dict(item) for item in result_data], f)
+        df = pd.DataFrame(result_data)
+        df.to_csv(
+            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/proposed_dividents.csv",
+            index=False,
+        )
+        # with open(
+        #     "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/proposed_dividents.json",
+        #     "w",
+        # ) as f:
+        #     json.dump([dict(item) for item in result_data], f)
 
     async def errback(self, failure):
         page = failure.request.meta["playwright_page"]
