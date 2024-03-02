@@ -1,0 +1,40 @@
+name: run run_spiders.py
+
+on:
+  schedule:
+    - cron: '0 17 * * *'  # Run the workflow every day at 5PM
+
+jobs:
+  run_spiders:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Daily Trading Spider
+        run: scrapy crawl dailytradingdata
+
+      - name: Run Proposed Dividends Spider
+        run: scrapy crawl proposed_dividends
+
+      - name: Configure Git
+        run: |
+          git config user.name "Github automated"
+          git config user.email "subheshjoshi@yahoo.com"
+
+      - name: Commit and Push Changes
+        run: |
+          git add .
+          git commit -m "Update data from Scrapy spiders"
+          git push
