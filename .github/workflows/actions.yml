@@ -3,6 +3,7 @@ name: Scrapy Workflow
 on:
   schedule:
     - cron: "0 17 * * *" # Run the workflow every day at 5 PM
+  workflow_dispatch: # Enable manual trigger
 
 jobs:
   run_spiders:
