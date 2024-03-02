@@ -8,6 +8,7 @@
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = "stocks"
+DATA_DIR = "data"
 
 SPIDER_MODULES = ["stocks.spiders"]
 NEWSPIDER_MODULE = "stocks.spiders"
@@ -70,9 +71,9 @@ TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    "stocks.pipelines.StocksPipeline": 300,
-# }
+ITEM_PIPELINES = {
+    "stocks.pipelines.SQLitePipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

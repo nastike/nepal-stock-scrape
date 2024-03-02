@@ -1,9 +1,7 @@
+# daily_trading_spider.py
 import scrapy
-from stocks.items import StocksItem
 
-# import json
-# import csv
-import pandas as pd
+from items import StocksItem
 
 
 class DailyTrading(scrapy.Spider):
@@ -16,32 +14,19 @@ class DailyTrading(scrapy.Spider):
 
         for row in response.css("#headFixed tbody tr"):
             data = [
-                item.strip() for item in row.css("td::text").getall() if item.strip()
+                item.strip().replace('"', "").replace(",", "")
+                for item in row.css("td::text").getall()
+                if item.strip()
             ]
             symbol = row.css("td a::text").get()
 
             item = StocksItem()
             item["symbol"] = symbol
             item["ltp"] = data[1]
-
             item["open"] = data[-5]
             item["low"] = data[-3]
             item["previous_close"] = data[-1]
 
             result_data.append(item)
 
-        # Save the scraped data to a JSON file
-        df = pd.DataFrame(result_data)
-        df.to_json(
-            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/live.json",
-            orient="records",
-        )
-        df.to_csv(
-            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/livecsv.csv",
-            index=False,
-        )
-        # with open(
-        #     "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/daily_trading.json",
-        #     "w",
-        # ) as f:
-        #     json.dump([dict(item) for item in result_data], f)
+        yield from result_data

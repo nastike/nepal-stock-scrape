@@ -14,8 +14,6 @@ class StocksItem(scrapy.Item):
     low = scrapy.Field()
     previous_close = scrapy.Field()
 
-    pass
-
 
 class ShareItem(scrapy.Item):
     name = scrapy.Field()

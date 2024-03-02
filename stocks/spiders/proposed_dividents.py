@@ -1,13 +1,10 @@
 import scrapy
-from stocks.items import ShareItem
-from scrapy_playwright.page import PageMethod
-
-# import json
-import pandas as pd
+from items import ShareItem
+from scrapy_playwright.page import PageMethod  # Import PageMethod
 
 
 class ProposedDividendsSpider(scrapy.Spider):
-    name = "proposed_dividents"
+    name = "proposed_dividends"
 
     def start_requests(self):
         url = "https://www.sharesansar.com/proposed-dividend"
@@ -23,7 +20,6 @@ class ProposedDividendsSpider(scrapy.Spider):
 
     async def parse(self, response):
         page = response.meta["playwright_page"]
-        result_data = []
 
         while True:
             for row in response.css("#myTableLD tbody tr"):
@@ -37,14 +33,14 @@ class ProposedDividendsSpider(scrapy.Spider):
                 item = ShareItem()
                 item["name"] = name.strip() if name else None
                 item["symbol"] = symbol.strip() if symbol else None
-                item["bonus"] = bonus.strip() if bonus else None
-                item["cash"] = cash.strip() if cash else None
-                item["total"] = total.strip() if total else None
+                item["bonus"] = self.convert_to_float(bonus)
+                item["cash"] = self.convert_to_float(cash)
+                item["total"] = self.convert_to_float(total)
                 item["announcement_date"] = (
                     announcement_date.strip() if announcement_date else None
                 )
 
-                result_data.append(item)
+                yield item
 
             is_disabled = await page.evaluate(
                 """() => {
@@ -57,22 +53,17 @@ class ProposedDividendsSpider(scrapy.Spider):
                 break
 
             await page.click("#myTableLD_next")
-            # Wait for a js element / data here instead
             await page.wait_for_timeout(2000)  # Wait for 2 seconds
 
         await page.close()
 
-        # Save the final result to a file
-        df = pd.DataFrame(result_data)
-        df.to_csv(
-            "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/proposed_dividents.csv",
-            index=False,
-        )
-        # with open(
-        #     "/Users/subhesh/Workspace/share_sansar/stocks/stocks/data/proposed_dividents.json",
-        #     "w",
-        # ) as f:
-        #     json.dump([dict(item) for item in result_data], f)
+    def convert_to_float(self, value):
+        try:
+            # Convert to float
+            return float(value.replace(",", "").replace('"', ""))
+        except (ValueError, AttributeError):
+            # If conversion fails, return None
+            return None
 
     async def errback(self, failure):
         page = failure.request.meta["playwright_page"]
