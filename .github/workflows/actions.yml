@@ -35,6 +35,9 @@ jobs:
           git config user.name "githubactions"
           git config user.email "subheshjoshi@yahoo.com"
 
+      - name: Pull Changes from Remote Repository
+        run: git pull origin main
+
       - name: Commit and Push Changes
         run: |
           git add .
