@@ -21,7 +21,7 @@ _compression
 _contextvars
 _csv
 _ctypes
-_cython_3_0_7
+_cython_3_0_9
 _datetime
 _decimal
 _frozen_importlib
