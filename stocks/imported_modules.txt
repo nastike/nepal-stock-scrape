@@ -238,6 +238,7 @@ filelock._soft
 filelock._unix
 filelock._util
 filelock._windows
+filelock.asyncio
 filelock.version
 fnmatch
 ftplib
