@@ -153,6 +153,9 @@ cryptography.hazmat.bindings._rust
 cryptography.hazmat.bindings.openssl
 cryptography.hazmat.bindings.openssl._conditional
 cryptography.hazmat.bindings.openssl.binding
+cryptography.hazmat.decrepit
+cryptography.hazmat.decrepit.ciphers
+cryptography.hazmat.decrepit.ciphers.algorithms
 cryptography.hazmat.primitives
 cryptography.hazmat.primitives._asymmetric
 cryptography.hazmat.primitives._cipheralgorithm
