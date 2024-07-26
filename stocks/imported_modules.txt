@@ -24,6 +24,7 @@ _ctypes
 _cython_3_0_10
 _datetime
 _decimal
+_distutils_hack
 _frozen_importlib
 _frozen_importlib_external
 _functools
