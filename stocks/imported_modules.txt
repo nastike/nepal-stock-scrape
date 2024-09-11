@@ -403,7 +403,6 @@ pyasn1.codec.der.decoder
 pyasn1.codec.streaming
 pyasn1.compat
 pyasn1.compat.integer
-pyasn1.compat.octets
 pyasn1.debug
 pyasn1.error
 pyasn1.type
