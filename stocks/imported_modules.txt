@@ -275,6 +275,7 @@ importlib._bootstrap_external
 importlib._common
 importlib.abc
 importlib.machinery
+importlib.metadata
 importlib.resources
 importlib.util
 incremental
@@ -489,6 +490,8 @@ requests.packages.urllib3.connectionpool
 requests.packages.urllib3.exceptions
 requests.packages.urllib3.fields
 requests.packages.urllib3.filepost
+requests.packages.urllib3.http2
+requests.packages.urllib3.http2.probe
 requests.packages.urllib3.poolmanager
 requests.packages.urllib3.response
 requests.packages.urllib3.util
@@ -817,6 +820,8 @@ urllib3.contrib
 urllib3.exceptions
 urllib3.fields
 urllib3.filepost
+urllib3.http2
+urllib3.http2.probe
 urllib3.poolmanager
 urllib3.response
 urllib3.util
