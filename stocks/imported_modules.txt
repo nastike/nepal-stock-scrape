@@ -413,13 +413,10 @@ pyasn1.type.constraint
 pyasn1.type.error
 pyasn1.type.namedtype
 pyasn1.type.namedval
-pyasn1.type.opentype
 pyasn1.type.tag
 pyasn1.type.tagmap
 pyasn1.type.univ
 pyasn1.type.useful
-pyasn1_modules
-pyasn1_modules.rfc2459
 pydispatch
 pydispatch.dispatcher
 pydispatch.errors
