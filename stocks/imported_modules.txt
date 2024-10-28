@@ -788,6 +788,7 @@ twisted.python.versions
 twisted.python.win32
 twisted.python.zippath
 twisted.web
+twisted.web._abnf
 twisted.web._newclient
 twisted.web._responses
 twisted.web.client
