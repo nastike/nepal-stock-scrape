@@ -713,6 +713,7 @@ twisted.cred.portal
 twisted.internet
 twisted.internet._baseprocess
 twisted.internet._idna
+twisted.internet._multicast
 twisted.internet._newtls
 twisted.internet._posixstdio
 twisted.internet._producer_helpers
