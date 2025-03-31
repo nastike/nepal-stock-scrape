@@ -250,7 +250,6 @@ functools
 gc
 genericpath
 gettext
-glob
 greenlet
 greenlet._greenlet
 grp
