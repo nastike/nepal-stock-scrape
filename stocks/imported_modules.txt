@@ -389,6 +389,10 @@ posix
 posixpath
 pprint
 protego
+protego._protego
+protego._ruleset
+protego._urlpattern
+protego._utils
 pty
 pwd
 pyasn1
