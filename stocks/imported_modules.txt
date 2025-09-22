@@ -21,7 +21,7 @@ _compression
 _contextvars
 _csv
 _ctypes
-_cython_3_1_3amsendbackport
+_cython_3_1_4amsendbackport
 _datetime
 _decimal
 _distutils_hack
