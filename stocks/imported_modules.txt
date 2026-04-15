@@ -419,7 +419,6 @@ operator
 os
 os.path
 packaging
-packaging._structures
 packaging.version
 parsel
 parsel.csstranslator
