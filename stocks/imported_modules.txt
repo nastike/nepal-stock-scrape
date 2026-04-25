@@ -163,9 +163,11 @@ cryptography.hazmat.bindings.openssl.binding
 cryptography.hazmat.decrepit
 cryptography.hazmat.decrepit.ciphers
 cryptography.hazmat.decrepit.ciphers.algorithms
+cryptography.hazmat.decrepit.ciphers.modes
 cryptography.hazmat.primitives
 cryptography.hazmat.primitives._asymmetric
 cryptography.hazmat.primitives._cipheralgorithm
+cryptography.hazmat.primitives._modes
 cryptography.hazmat.primitives._serialization
 cryptography.hazmat.primitives.asymmetric
 cryptography.hazmat.primitives.asymmetric.dh
@@ -173,6 +175,8 @@ cryptography.hazmat.primitives.asymmetric.dsa
 cryptography.hazmat.primitives.asymmetric.ec
 cryptography.hazmat.primitives.asymmetric.ed25519
 cryptography.hazmat.primitives.asymmetric.ed448
+cryptography.hazmat.primitives.asymmetric.mldsa
+cryptography.hazmat.primitives.asymmetric.mlkem
 cryptography.hazmat.primitives.asymmetric.padding
 cryptography.hazmat.primitives.asymmetric.rsa
 cryptography.hazmat.primitives.asymmetric.types
